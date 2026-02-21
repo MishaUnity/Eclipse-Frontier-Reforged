@@ -455,6 +455,71 @@
       board: [ DoorElectronicsSectorSecurity ]
 
 - type: entity
+  parent: AirlockExternal
+  id: AirlockExternalShuttleCrewLocked
+  suffix: External, Shuttle Crew, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleCrew ]
+
+- type: entity
+  parent: AirlockExternalCommand
+  id: AirlockExternalShuttlePilotLocked
+  suffix: External, Shuttle Pilot, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttlePilot ]
+
+- type: entity
+  parent: AirlockExternalCommand
+  id: AirlockExternalShuttleCaptainLocked
+  suffix: External, Shuttle Captain, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleCaptain ]
+
+- type: entity
+  parent: AirlockExternalEngineering
+  id: AirlockExternalShuttleEngineerLocked
+  suffix: External, Shuttle Engineer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleEngineer ]
+
+- type: entity
+  parent: AirlockExternalMedical
+  id: AirlockExternalShuttleMedicLocked
+  suffix: External, Shuttle Medic, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleMedic ]
+
+- type: entity
+  parent: AirlockExternalSecurity
+  id: AirlockExternalShuttleSecurityLocked
+  suffix: External, Shuttle Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleSecurity ]
+
+- type: entity
+  parent: AirlockExternalMercenary
+  id: AirlockExternalShuttleMercenaryLocked
+  suffix: External, Shuttle Mercenary, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleMercenary ]
+
+# External Glass Airlocks
+
+- type: entity
   parent: AirlockExternalGlassSectorSecurity
   id: AirlockExternalGlassSectorSecurityLocked
   suffix: External, Glass, Sector Security, Locked
@@ -462,6 +527,69 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSectorSecurity ]
+
+- type: entity
+  parent: AirlockExternalGlass
+  id: AirlockExternalGlassShuttleCrewLocked
+  suffix: External, Glass, Shuttle Crew, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleCrew ]
+
+- type: entity
+  parent: AirlockExternalGlassCommand
+  id: AirlockExternalGlassShuttlePilotLocked
+  suffix: External, Glass, Shuttle Pilot, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttlePilot ]
+
+- type: entity
+  parent: AirlockExternalGlassCommand
+  id: AirlockExternalGlassShuttleCaptainLocked
+  suffix: External, Glass, Shuttle Captain, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleCaptain ]
+
+- type: entity
+  parent: AirlockExternalGlassEngineering
+  id: AirlockExternalGlassShuttleEngineerLocked
+  suffix: External, Glass, Shuttle Engineer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleEngineer ]
+
+- type: entity
+  parent: AirlockExternalGlassMedical
+  id: AirlockExternalGlassShuttleMedicLocked
+  suffix: External, Glass, Shuttle Medic, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleMedic ]
+
+- type: entity
+  parent: AirlockExternalGlassSecurity
+  id: AirlockExternalGlassShuttleSecurityLocked
+  suffix: External, Glass, Shuttle Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleSecurity ]
+
+- type: entity
+  parent: AirlockExternalGlassMercenary
+  id: AirlockExternalGlassShuttleMercenaryLocked
+  suffix: External, Glass, Shuttle Mercenary, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleMercenary ]
 
 # Shuttle Docks Airlocks
 

@@ -15,6 +15,48 @@
     layoutId: AirlockSecurity
 
 - type: entity
+  parent: AirlockExternal
+  id: AirlockExternalCommand
+  suffix: External, Command
+  components:
+  - type: Wires
+    layoutId: AirlockCommand
+
+- type: entity
+  parent: AirlockExternal
+  id: AirlockExternalEngineering
+  suffix: External, Engineering
+  components:
+  - type: Wires
+    layoutId: AirlockEngineering
+
+- type: entity
+  parent: AirlockExternal
+  id: AirlockExternalMedical
+  suffix: External, Medical
+  components:
+  - type: Wires
+    layoutId: AirlockMedical
+
+- type: entity
+  parent: AirlockExternal
+  id: AirlockExternalSecurity
+  suffix: External, Security
+  components:
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: AirlockExternal
+  id: AirlockExternalMercenary
+  suffix: External, Mercenary
+  components:
+  - type: Wires
+    layoutId: AirlockSecurity
+
+# External Glass Airlocks
+
+- type: entity
   parent: AirlockExternalGlass
   id: AirlockExternalGlassSectorSecurity
   suffix: External, Glass, Sector Security
@@ -24,3 +66,42 @@
   - type: Wires
     layoutId: AirlockSecurity
 
+- type: entity
+  parent: AirlockExternalGlass
+  id: AirlockExternalGlassCommand
+  suffix: External, Glass, Command
+  components:
+  - type: Wires
+    layoutId: AirlockCommand
+
+- type: entity
+  parent: AirlockExternalGlass
+  id: AirlockExternalGlassEngineering
+  suffix: External, Glass, Engineering
+  components:
+  - type: Wires
+    layoutId: AirlockEngineering
+
+- type: entity
+  parent: AirlockExternalGlass
+  id: AirlockExternalGlassMedical
+  suffix: External, Glass, Medical
+  components:
+  - type: Wires
+    layoutId: AirlockMedical
+
+- type: entity
+  parent: AirlockExternalGlass
+  id: AirlockExternalGlassSecurity
+  suffix: External, Glass, Security
+  components:
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: AirlockExternalGlass
+  id: AirlockExternalGlassMercenary
+  suffix: External, Glass, Mercenary
+  components:
+  - type: Wires
+    layoutId: AirlockSecurity
