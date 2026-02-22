@@ -42,23 +42,7 @@ namespace Content.Server.Solar.EntitySystems
         /// </summary>
         public float SunOcclusionCheckDistance = 20;
 
-        /// <summary>
-        /// TODO: *Should be moved into the solar tracker when powernet allows for it.*
-        /// The current target panel rotation.
-        /// </summary>
-        public Angle TargetPanelRotation = Angle.Zero;
-
-        /// <summary>
-        /// TODO: *Should be moved into the solar tracker when powernet allows for it.*
-        /// The current target panel velocity.
-        /// </summary>
-        public Angle TargetPanelVelocity = Angle.Zero;
-
-        /// <summary>
-        /// TODO: *Should be moved into the solar tracker when powernet allows for it.*
-        /// Last update of total panel power.
-        /// </summary>
-        public float TotalPanelPower = 0;
+        // Eclipse: moved solar targeting to SolarTargetingComponent
 
         /// <summary>
         /// Queue of panels to update each cycle.
@@ -76,9 +60,15 @@ namespace Content.Server.Solar.EntitySystems
         public void Reset(RoundRestartCleanupEvent ev)
         {
             RandomizeSun();
-            TargetPanelRotation = Angle.Zero;
-            TargetPanelVelocity = Angle.Zero;
-            TotalPanelPower = 0;
+            // Eclipse-Start
+            var query = EntityQueryEnumerator<SolarTargetingComponent>();
+            while (query.MoveNext(out _, out var panel))
+            {
+                panel.TargetPanelRotation = Angle.Zero;
+                panel.TargetPanelVelocity = Angle.Zero;
+                panel.TotalPanelPower = 0;
+            }
+            // Eclipse-End
         }
 
         private void RandomizeSun()
@@ -110,8 +100,14 @@ namespace Content.Server.Solar.EntitySystems
             TowardsSun += SunAngularVelocity * frameTime;
             TowardsSun = TowardsSun.Reduced();
 
-            TargetPanelRotation += TargetPanelVelocity * frameTime;
-            TargetPanelRotation = TargetPanelRotation.Reduced();
+            // Eclipse-Start
+            var targetingQuery = EntityQueryEnumerator<SolarTargetingComponent>();
+            while (targetingQuery.MoveNext(out _, out var comp))
+            {
+                comp.TargetPanelRotation += comp.TargetPanelVelocity * frameTime;
+                comp.TargetPanelRotation = comp.TargetPanelRotation.Reduced();
+            }
+            // Eclipse-End
 
             if (_updateQueue.Count > 0)
             {
@@ -121,15 +117,47 @@ namespace Content.Server.Solar.EntitySystems
             }
             else
             {
-                TotalPanelPower = 0;
-
+                // Eclipse-Start
+                targetingQuery = EntityQueryEnumerator<SolarTargetingComponent>();
+                while (targetingQuery.MoveNext(out _, out var comp))
+                {
+                    comp.TotalPanelPower = 0;
+                }
+                // Eclipse-End
                 var query = EntityQueryEnumerator<SolarPanelComponent, TransformComponent>();
                 while (query.MoveNext(out var uid, out var panel, out var xform))
                 {
-                    TotalPanelPower += panel.MaxSupply * panel.Coverage;
-                    _transformSystem.SetWorldRotation(xform, TargetPanelRotation);
+                    // Eclipse-Start
+                    var gridUid = _transformSystem.GetGrid((uid, xform));
+
+                    if (!gridUid.HasValue)
+                        continue;
+
+                    if (EnsureComp<SolarTargetingComponent>(gridUid.Value, out var targetComp))
+                    {
+                        _transformSystem.SetWorldRotation(xform, targetComp.TargetPanelRotation);
+                    }
+                    else
+                    {
+                        targetComp.TargetPanelRotation = _transformSystem.GetWorldRotation(xform);
+                    }
+
+                    targetComp.TotalPanelPower += panel.MaxSupply * panel.Coverage;
+                    targetComp.NumPanels += 1;
+                    // Eclipse-End
+
                     _updateQueue.Enqueue((uid, panel));
                 }
+
+                // Eclipse-Start
+                // Remove all SolarTargetingComponent's that are not needed
+                targetingQuery = EntityQueryEnumerator<SolarTargetingComponent>();
+                while (targetingQuery.MoveNext(out var uid, out var comp))
+                {
+                    if (comp.NumPanels == 0)
+                        RemComp<SolarTargetingComponent>(uid);
+                }
+                // Eclipse-End
             }
         }
 
@@ -168,7 +196,7 @@ namespace Content.Server.Solar.EntitySystems
             if (coverage > 0)
             {
                 // Determine if the solar panel is occluded, and zero out coverage if so.
-                var ray = new CollisionRay(_transformSystem.GetWorldPosition(xform), TowardsSun.ToWorldVec(), (int) CollisionGroup.Opaque);
+                var ray = new CollisionRay(_transformSystem.GetWorldPosition(xform), TowardsSun.ToWorldVec(), (int)CollisionGroup.Opaque);
                 var rayCastResults = _physicsSystem.IntersectRayWithPredicate(
                     xform.MapID,
                     ray,
@@ -191,7 +219,7 @@ namespace Content.Server.Solar.EntitySystems
             if (!Resolve(uid, ref solar, ref supplier, false))
                 return;
 
-            supplier.MaxSupply = (int) (solar.MaxSupply * solar.Coverage);
+            supplier.MaxSupply = (int)(solar.MaxSupply * solar.Coverage);
         }
     }
 }

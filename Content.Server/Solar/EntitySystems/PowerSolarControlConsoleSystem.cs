@@ -14,6 +14,7 @@ namespace Content.Server.Solar.EntitySystems
     {
         [Dependency] private readonly PowerSolarSystem _powerSolarSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
+        [Dependency] private readonly SharedTransformSystem _transform = default!; // Eclipse
 
         /// <summary>
         /// Timer used to avoid updating the UI state every frame (which would be overkill)
@@ -33,27 +34,52 @@ namespace Content.Server.Solar.EntitySystems
             if (_updateTimer >= 1)
             {
                 _updateTimer -= 1;
-                var state = new SolarControlConsoleBoundInterfaceState(_powerSolarSystem.TargetPanelRotation, _powerSolarSystem.TargetPanelVelocity, _powerSolarSystem.TotalPanelPower, _powerSolarSystem.TowardsSun);
-                var query = EntityQueryEnumerator<SolarControlConsoleComponent, UserInterfaceComponent>();
-                while (query.MoveNext(out var uid, out _, out var uiComp))
+                // Eclipse-Start
+                var query = EntityQueryEnumerator<SolarControlConsoleComponent, UserInterfaceComponent, TransformComponent>();
+                while (query.MoveNext(out var uid, out _, out var uiComp, out var xform))
                 {
-                    _uiSystem.SetUiState((uid, uiComp), SolarControlConsoleUiKey.Key, state);
+                    var gridUid = _transform.GetGrid((uid, xform));
+
+                    if (!gridUid.HasValue)
+                        continue;
+
+                    if (TryComp<SolarTargetingComponent>(gridUid.Value, out var targetComp))
+                    {
+                        var state = new SolarControlConsoleBoundInterfaceState(targetComp.TargetPanelRotation, targetComp.TargetPanelVelocity, targetComp.TotalPanelPower, _powerSolarSystem.TowardsSun);
+                        _uiSystem.SetUiState((uid, uiComp), SolarControlConsoleUiKey.Key, state);
+                    }
+                    else
+                    {
+                        var state = new SolarControlConsoleBoundInterfaceState(0, 0, 0, _powerSolarSystem.TowardsSun);
+                        _uiSystem.SetUiState((uid, uiComp), SolarControlConsoleUiKey.Key, state);
+                    }
                 }
+                // Eclipse-End
             }
         }
 
         private void OnUIMessage(EntityUid uid, SolarControlConsoleComponent component, SolarControlConsoleAdjustMessage msg)
         {
+            // Eclipse-Start
+            var gridUid = _transform.GetGrid(uid);
+
+            if (!gridUid.HasValue)
+                return;
+
+            if (!TryComp<SolarTargetingComponent>(gridUid.Value, out var targetComp))
+                return;
+
             if (double.IsFinite(msg.Rotation))
             {
-                _powerSolarSystem.TargetPanelRotation = msg.Rotation.Reduced();
+                targetComp.TargetPanelRotation = msg.Rotation.Reduced();
             }
             if (double.IsFinite(msg.AngularVelocity))
             {
                 var degrees = msg.AngularVelocity.Degrees;
                 degrees = Math.Clamp(degrees, -PowerSolarSystem.MaxPanelVelocityDegrees, PowerSolarSystem.MaxPanelVelocityDegrees);
-                _powerSolarSystem.TargetPanelVelocity = Angle.FromDegrees(degrees);
+                targetComp.TargetPanelVelocity = Angle.FromDegrees(degrees);
             }
+            // Eclipse-End
         }
 
     }
