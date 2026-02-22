@@ -602,6 +602,14 @@
     containers:
       board: [ DoorElectronicsSectorSecurity ]
 
+- type: entity
+  parent: AirlockShuttle
+  id: AirlockShuttleShuttleCrewLocked
+  suffix: Docking, Shuttle Crew, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleCrew ]
 
 - type: entity
   parent: AirlockGlassShuttleSectorSecurity
@@ -611,6 +619,15 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSectorSecurity ]
+
+- type: entity
+  parent: AirlockGlassShuttle
+  id: AirlockGlassShuttleShuttleCrewLocked
+  suffix: Docking, Glass, Shuttle Crew, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsShuttleCrew ]
 
 # High Security Doors
 
