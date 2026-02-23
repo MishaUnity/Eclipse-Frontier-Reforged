@@ -20,4 +20,5 @@
     - CableMVStack
     - CableHVStack
     - AccessConfiguratorUniversal
+    - EntityLinkConfigurator
 

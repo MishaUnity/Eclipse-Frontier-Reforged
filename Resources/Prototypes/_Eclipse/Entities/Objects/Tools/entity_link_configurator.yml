@@ -1,0 +1,26 @@
+- type: entity
+  name: entity link configurator
+  parent: BaseItem
+  id: EntityLinkConfigurator
+  description: If you are somehow seeing this, no you're not.
+  components:
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/multitool_drop.ogg
+  - type: Sprite
+    sprite: Objects/Tools/network_configurator.rsi
+    layers:
+      - state: icon
+      - state: mode-link
+        map: ["enum.EntityLinkConfiguratorLayers.ModeLight"]
+        shader: unshaded
+  - type: Item
+    size: Small
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EntityLinkConfiguratorVisuals.Mode:
+        enum.EntityLinkConfiguratorLayers.ModeLight:
+          True: { state: mode-link }
+          False: { state: mode-list }
+  - type: EntityLinkConfigurator

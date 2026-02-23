@@ -43,7 +43,7 @@ public sealed class LinkedEntitySystem : EntitySystem
     /// <param name="second">The second entity to link</param>
     /// <param name="deleteOnEmptyLinks">Whether both entities should now delete once their links are removed</param>
     /// <returns>Whether linking was successful (e.g. they weren't already linked)</returns>
-    public bool TryLink(EntityUid first, EntityUid second, bool deleteOnEmptyLinks=false)
+    public bool TryLink(EntityUid first, EntityUid second, bool deleteOnEmptyLinks = false)
     {
         var firstLink = EnsureComp<LinkedEntityComponent>(first);
         var secondLink = EnsureComp<LinkedEntityComponent>(second);
@@ -65,7 +65,7 @@ public sealed class LinkedEntitySystem : EntitySystem
     /// Does a one-way link from source to target.
     /// </summary>
     /// <param name="deleteOnEmptyLinks">Whether both entities should now delete once their links are removed</param>
-    public bool OneWayLink(EntityUid source, EntityUid target, bool deleteOnEmptyLinks=false)
+    public bool OneWayLink(EntityUid source, EntityUid target, bool deleteOnEmptyLinks = false)
     {
         var firstLink = EnsureComp<LinkedEntityComponent>(source);
         firstLink.DeleteOnEmptyLinks = deleteOnEmptyLinks;
@@ -76,6 +76,33 @@ public sealed class LinkedEntitySystem : EntitySystem
 
         return firstLink.LinkedEntities.Add(target);
     }
+
+    // Eclipse-Start
+    /// <summary>
+    ///     Unlinks the second entity from the first one. Deletes the first entity if <see cref="LinkedEntityComponent.DeleteOnEmptyLinks"/>
+    ///     was true and its links are now empty.
+    /// </summary>
+    /// <param name="first">The first entity to unlink</param>
+    /// <param name="second">The second entity to unlink</param>
+    /// <param name="firstLink">Resolve comp</param>
+    /// <returns>Whether unlinking was successful (e.g. they both were actually linked to one another)</returns>
+    public bool TryUnlinkOneWay(EntityUid first, EntityUid second, LinkedEntityComponent? firstLink = null)
+    {
+        if (!Resolve(first, ref firstLink))
+            return false;
+
+        var success = firstLink.LinkedEntities.Remove(second);
+
+        _appearance.SetData(first, LinkedEntityVisuals.HasAnyLinks, firstLink.LinkedEntities.Any());
+
+        Dirty(first, firstLink);
+
+        if (firstLink.LinkedEntities.Count == 0 && firstLink.DeleteOnEmptyLinks)
+            QueueDel(first);
+
+        return success;
+    }
+    // Eclipse-End
 
     /// <summary>
     ///     Unlinks two entities. Deletes either entity if <see cref="LinkedEntityComponent.DeleteOnEmptyLinks"/>
@@ -132,6 +159,17 @@ public sealed class LinkedEntitySystem : EntitySystem
 
         return false;
     }
+
+    // Eclipse-Start
+    /// <returns>Whether the ent has a one directional link with linkedWith entity</returns>
+    public bool IsLinkedOneWay(Entity<LinkedEntityComponent?> ent, EntityUid linkedWith)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return false;
+
+        return ent.Comp.LinkedEntities.Contains(linkedWith);
+    }
+    // Eclipse-End
 
     #endregion
 }
