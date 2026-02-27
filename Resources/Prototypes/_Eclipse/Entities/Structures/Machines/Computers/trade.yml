@@ -1,0 +1,35 @@
+- type: entity
+  id: ComputerTradePalletConsole
+  parent: BaseComputer
+  name: trade sale computer
+  description: Used to sell goods loaded onto trade pallets.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: transfer
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: TradePalletConsole
+  - type: ActivatableUI
+    key: enum.TradePalletConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TradePalletConsoleUiKey.Key:
+        type: TradePalletConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+  - type: PointLight
+    radius: 1.5
+    energy: 4.0
+    color: "#b89f25"

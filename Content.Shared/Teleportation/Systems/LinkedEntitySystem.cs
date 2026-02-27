@@ -169,6 +169,14 @@ public sealed class LinkedEntitySystem : EntitySystem
 
         return ent.Comp.LinkedEntities.Contains(linkedWith);
     }
+
+    public HashSet<EntityUid>? GetLinkedEntities(Entity<LinkedEntityComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return null;
+
+        return ent.Comp.LinkedEntities;
+    }
     // Eclipse-End
 
     #endregion

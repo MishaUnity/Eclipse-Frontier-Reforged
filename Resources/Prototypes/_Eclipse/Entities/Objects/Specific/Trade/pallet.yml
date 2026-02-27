@@ -1,0 +1,31 @@
+- type: entity
+  id: TradePallet
+  parent: BaseStructure
+  name: trade selling pallet
+  description: Designates valid items to sell. Made of plastitanium to discourage pesky vandals.
+  components:
+  - type: TradePallet
+  - type: Sprite
+    sprite: Structures/cargo_pallets.rsi
+  - type: Icon
+    sprite: Structures/cargo_pallets.rsi
+    state: cargo_pallet_sell
+  - type: IconSmooth
+    key: cargo_pallet_sell
+    base: cargo_pallet_sell_
+  - type: InteractionOutline
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: CollideOnAnchor
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 15
+        mask:
+        - MachineMask
