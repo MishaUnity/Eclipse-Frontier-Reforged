@@ -35,7 +35,7 @@ public sealed class ConfirmButton : Button
     /// <summary>
     /// Fired when the button was pressed (before confirmation)
     /// </summary>
-    public new event Action<ButtonEventArgs>? OnConfirming;
+    public event Action<ButtonEventArgs>? OnConfirming;
 
     // Eclipse-End
 
