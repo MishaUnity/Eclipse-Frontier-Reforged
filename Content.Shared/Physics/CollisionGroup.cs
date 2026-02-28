@@ -77,6 +77,7 @@ public enum CollisionGroup
     ThrownItem = Impassable | HighImpassable | BulletImpassable,
     WallLayer = Opaque | Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable,
     GlassLayer = Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable,
+    GlassLayerInteract = HighImpassable | MidImpassable | LowImpassable | BulletImpassable, // Eclipse
     HalfWallLayer = MidImpassable | LowImpassable,
     FlimsyLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | InteractImpassable,
 
@@ -87,6 +88,7 @@ public enum CollisionGroup
     FullTileMask = Impassable | HighImpassable | MidImpassable | LowImpassable | InteractImpassable,
     // FlyingMob can go past
     FullTileLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable,
+    FullTileLayerInteract = Opaque | HighImpassable | MidImpassable | LowImpassable | BulletImpassable, // Eclipse
 
     SubfloorMask = Impassable | LowImpassable
 }

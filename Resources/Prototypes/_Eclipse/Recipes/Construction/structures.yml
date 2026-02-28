@@ -1,0 +1,27 @@
+- type: construction
+  id: DiagonalWall
+  name: construction-recipe-diagonal-wall
+  graph: Girder
+  startNode: start
+  targetNode: diagonalWall
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: DiagonalReinforcedWall
+  name: construction-recipe-diagonal-reinforced-wall
+  graph: Girder
+  startNode: start
+  targetNode: diagonalReinforcedWall
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

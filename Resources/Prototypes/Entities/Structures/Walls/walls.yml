@@ -64,39 +64,6 @@
   - type: Occluder # Breaks on diagonal walls
 
 - type: entity
-  abstract: true
-  parent: BaseStructureWall
-  id: WallDiagonalBase
-  suffix: Diagonal
-  components:
-  - type: Tag
-    tags:
-    - Wall
-    - Diagonal
-  - type: IconSmooth
-    mode: Diagonal
-    key: walls
-    base: state
-  - type: Airtight
-    noAirWhenFullyAirBlocked: false
-    airBlockedDirection:
-    - South
-    - East
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PolygonShape
-            vertices:
-            - "-0.5,-0.5"
-            - "0.5,0.5"
-            - "0.5,-0.5"
-        mask:
-        - FullTileMask
-        layer:
-        - WallLayer
-
-- type: entity
   parent: BaseWall
   id: WallBrick
   name: brick wall
@@ -535,55 +502,6 @@
               acts: [ "Destruction" ]
 
 - type: entity
-  parent: WallDiagonalBase
-  id: WallPlastitaniumDiagonalIndestructible
-  name: plastitanium wall
-  suffix: diagonal, indestructible
-  components:
-  - type: Sprite
-    drawdepth: Walls
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
-    state: state0
-  - type: Icon
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
-    state: state0
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
-  - type: RadiationBlocker
-    resistance: 5
-
-- type: entity
-  parent: WallPlastitaniumDiagonalIndestructible
-  id: WallPlastitaniumDiagonal
-  name: plastitanium wall
-  suffix: diagonal
-  components:
-  - type: Sprite
-    drawdepth: Walls
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
-    state: state0
-  - type: Icon
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
-    state: state0
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 1000
-      behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            Girder:
-              min: 1
-              max: 1
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalSlam
-
-- type: entity
   parent: BaseWall
   id: WallReinforced
   name: reinforced wall
@@ -692,46 +610,6 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
 
-- type: entity
-  parent: WallDiagonalBase
-  id: WallReinforcedDiagonal
-  name: reinforced wall
-  components:
-  - type: Sprite
-    drawdepth: Walls
-    sprite: Structures/Walls/reinforced_diagonal.rsi
-    state: state0
-  - type: Icon
-    sprite: Structures/Walls/reinforced_diagonal.rsi
-    state: state0
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 600
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
-        damage: 300
-      behaviors:
-      - !type:ChangeConstructionNodeBehavior
-        node: girder
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalSlam
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-  - type: RadiationBlocker
-    resistance: 5
-
 # Riveting
 - type: entity
   parent: BaseWall
@@ -837,73 +715,6 @@
     base: silver
 
 #shuttle walls
-- type: entity
-  parent: WallDiagonalBase
-  id: WallShuttleDiagonal
-  name: shuttle wall
-  components:
-  - type: Sprite
-    drawdepth: Walls
-    sprite: Structures/Walls/shuttle_diagonal.rsi
-    state: state0
-  - type: Icon
-    sprite: Structures/Walls/shuttle_diagonal.rsi
-    state: state0
-  - type: Reflect
-    reflectProb: 1
-  - type: Pullable
-  - type: Airtight
-    noAirWhenFullyAirBlocked: false
-    airBlockedDirection:
-    - South
-    - East
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PolygonShape
-            vertices:
-            - "-0.5,-0.5"
-            - "0.5,0.5"
-            - "0.5,-0.5"
-        mask:
-        - FullTileMask
-        layer:
-        - WallLayer
-        density: 2000
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 600
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
-        damage: 300
-      behaviors:
-      - !type:ChangeConstructionNodeBehavior
-        node: girder
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalSlam
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-  - type: Construction
-    graph: Girder
-    node: diagonalshuttleWall
-  - type: RadiationBlocker
-    resistance: 5
-  - type: StaticPrice
-    price: 200
-
 - type: entity
   parent: BaseWall
   id: WallShuttle
@@ -1017,41 +828,6 @@
   - type: IconSmooth
     key: walls
     base: solid
-
-- type: entity
-  parent: WallDiagonalBase
-  id: WallSolidDiagonal
-  name: solid wall
-  components:
-  - type: Sprite
-    drawdepth: Walls
-    sprite: Structures/Walls/solid_diagonal.rsi
-    state: state0
-  - type: Icon
-    sprite: Structures/Walls/solid_diagonal.rsi
-    state: state0
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 400
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:ChangeConstructionNodeBehavior
-        node: girder
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalSlam
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
 
 - type: entity
   parent: WallSolid
@@ -1207,20 +983,6 @@
   - type: IconSmooth
     key: walls
     base: xenoborg
-
-- type: entity
-  parent: WallPlastitaniumDiagonal
-  id: WallXenoborgDiagonal
-  name: xenoborg wall
-  suffix: diagonal
-  components:
-  - type: Sprite
-    drawdepth: Walls
-    sprite: Structures/Walls/xenoborg_diagonal.rsi
-    state: state0
-  - type: Icon
-    sprite: Structures/Walls/xenoborg_diagonal.rsi
-    state: state0
 
 - type: entity
   parent: BaseWall
@@ -1410,47 +1172,6 @@
     - mining
     - miningB
   - type: Appearance
-
-- type: entity
-  parent: WallDiagonalBase
-  id: WallMiningDiagonal
-  name: mining wall
-  components:
-  - type: Sprite
-    drawdepth: Walls
-    sprite: Structures/Walls/mining_diagonal.rsi
-    state: state0
-  - type: Icon
-    sprite: Structures/Walls/mining_diagonal.rsi
-    state: state0
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 600
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            collection: MetalSlam
-    - trigger:
-        !type:DamageTrigger
-        damage: 300
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          Girder:
-            min: 1
-            max: 1
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalSlam
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
 
 
 # Vault Walls

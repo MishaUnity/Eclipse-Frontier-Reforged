@@ -198,7 +198,23 @@
         mask:
         - FullTileMask
         layer:
-        - GlassLayer
+        - GlassLayerInteract # Eclipse
+      # Eclipse-Start
+      fix_bottom:
+        shape: !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.46"
+        mask:
+        - InteractImpassable
+        layer:
+        - InteractImpassable
+      fix_right:
+        shape: !type:PhysShapeAabb
+          bounds: "0.46,-0.5,0.5,0.5"
+        mask:
+        - InteractImpassable
+        layer:
+        - InteractImpassable
+      # Eclipse-End
   - type: Construction
     graph: GrilleDiagonal
     node: grilleDiagonal
@@ -236,7 +252,23 @@
         mask:
         - FullTileMask
         layer:
-        - GlassLayer
+        - GlassLayerInteract # Eclipse
+      # Eclipse-Start
+      fix_bottom:
+        shape: !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.46"
+        mask:
+        - InteractImpassable
+        layer:
+        - InteractImpassable
+      fix_right:
+        shape: !type:PhysShapeAabb
+          bounds: "0.46,-0.5,0.5,0.5"
+        mask:
+        - InteractImpassable
+        layer:
+        - InteractImpassable
+      # Eclipse-End
   - type: Construction
     graph: GrilleDiagonal
     node: clockworkGrilleDiagonal

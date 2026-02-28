@@ -150,8 +150,24 @@
         mask:
         - FullTileMask
         layer:
-        - GlassLayer
+        - GlassLayerInteract # Eclipse
         density: 2000
+      # Eclipse-Start
+      fix_bottom:
+        shape: !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.46"
+        mask:
+        - InteractImpassable
+        layer:
+        - InteractImpassable
+      fix_right:
+        shape: !type:PhysShapeAabb
+          bounds: "0.46,-0.5,0.5,0.5"
+        mask:
+        - InteractImpassable
+        layer:
+        - InteractImpassable
+      # Eclipse-End
   - type: Airtight
     noAirWhenFullyAirBlocked: false
     airBlockedDirection:
