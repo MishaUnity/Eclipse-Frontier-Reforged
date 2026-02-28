@@ -67,6 +67,8 @@
     - type: Construction
       graph: Girder
       node: diagonalshuttleWall
+    - type: StaticPrice
+      price: 250
 
 - type: entity
   id: WallPlastitaniumDiagonalIndestructible
@@ -135,6 +137,8 @@
     - type: Construction
       graph: Girder
       node: diagonalReinforcedWall
+    - type: StaticPrice
+      price: 250
 
 - type: entity
   parent: [BaseWallDiagonal, WallXenoborg]
