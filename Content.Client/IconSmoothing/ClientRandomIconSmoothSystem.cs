@@ -17,6 +17,11 @@ public sealed class ClientRandomIconSmoothSystem : SharedRandomIconSmoothSystem
 
     private void OnAppearanceChange(Entity<RandomIconSmoothComponent> ent, ref AppearanceChangeEvent args)
     {
+        // Eclipse-Start
+        if (!ent.Comp.Enabled)
+            return;
+        // Eclipse-End
+
         if (!TryComp<IconSmoothComponent>(ent, out var smooth))
             return;
 

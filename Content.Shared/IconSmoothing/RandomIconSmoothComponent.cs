@@ -8,6 +8,9 @@ namespace Content.Shared.IconSmoothing;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class RandomIconSmoothComponent : Component
 {
+    [DataField]
+    public bool Enabled = true;
+
     /// <summary>
     /// StateBase will be randomly selected from this list. Allows to randomize the visual.
     /// </summary>

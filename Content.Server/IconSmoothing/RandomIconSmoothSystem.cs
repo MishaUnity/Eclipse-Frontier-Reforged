@@ -30,6 +30,11 @@ public sealed partial class RandomIconSmoothSystem : SharedRandomIconSmoothSyste
 
     private void Init(Entity<RandomIconSmoothComponent> ent)
     {
+        // Eclipse-Start
+        if (!ent.Comp.Enabled)
+            return;
+        // Eclipse-End
+
         if (ent.Comp.RandomStates.Count == 0)
             return;
 

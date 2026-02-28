@@ -153,3 +153,19 @@
   - type: Icon
     sprite: Structures/Walls/xenoborg_diagonal.rsi
     state: state0
+
+
+- type: entity
+  parent: [BaseWallDiagonal, WallMining]
+  id: WallMiningDiagonal
+  name: mining wall
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: Structures/Walls/mining_diagonal.rsi
+    state: state0
+  - type: Icon
+    sprite: Structures/Walls/mining_diagonal.rsi
+    state: state0
+  - type: RandomIconSmooth
+    enabled: false
