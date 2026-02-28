@@ -42,7 +42,7 @@ public sealed class PalletSystem : EntitySystem
 
     private void OnPalletSale(EntityUid uid, TradePalletConsoleComponent component, TradePalletSellMessage args)
     {
-        if (!TryComp<TransformComponent>(uid, out var xform))
+        if (!TryComp(uid, out TransformComponent? xform))
         {
             _audio.PlayPvs(component.DenySound, uid);
             return;
@@ -147,7 +147,7 @@ public sealed class PalletSystem : EntitySystem
         {
             foreach (var pallet in maybePallets)
             {
-                if (!TryComp<TransformComponent>(pallet, out var xform))
+                if (!TryComp(pallet, out TransformComponent? xform))
                 {
                     _sawmill.Warning($"Found a linked entity {pallet} to a trade console that didn't have a TransformComponent");
                     _link.TryUnlinkOneWay(consoleUid, pallet);
@@ -200,7 +200,7 @@ public sealed class PalletSystem : EntitySystem
         if (HasComp<MobStateComponent>(uid) || HasComp<CargoSellBlacklistComponent>(uid))
             return false;
 
-        if (!TryComp<TransformComponent>(uid, out var xform))
+        if (!TryComp(uid, out TransformComponent? xform))
             return true;
 
         if (xform.Anchored)
