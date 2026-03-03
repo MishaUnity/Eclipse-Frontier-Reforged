@@ -11,7 +11,7 @@ using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Utility;
 
-namespace Content.Server.GameTicking.Rules;
+namespace Content.Server.Linking.Systems;
 
 public sealed class EntityLinkConfiguratorSystem : SharedEntityLinkConfiguratorSystem
 {
@@ -57,27 +57,30 @@ public sealed class EntityLinkConfiguratorSystem : SharedEntityLinkConfiguratorS
         if (!args.CanReach || !args.Target.HasValue)
             return;
 
+        if (args.Target is not { Valid: true } target)
+            return;
+
         if (component.ActiveDeviceLink.HasValue)
         {
-            if (component.ActiveDeviceLink == args.Target)
+            if (component.ActiveDeviceLink == target)
             {
-                _popup.PopupEntity(Loc.GetString("link-configurator-link-stopped"), args.Target.Value, args.User);
+                _popup.PopupEntity(Loc.GetString("link-configurator-link-stopped"), target, args.User);
                 component.ActiveDeviceLink = null;
                 return;
             }
 
             // Remove links if already linked
-            if (_link.IsLinkedOneWay(component.ActiveDeviceLink.Value, args.Target.Value))
+            if (_link.IsLinkedOneWay(component.ActiveDeviceLink.Value, target))
             {
-                if (component.LinkModeSymmetrical && _link.IsLinkedOneWay(args.Target.Value, component.ActiveDeviceLink.Value))
+                if (component.LinkModeSymmetrical && _link.IsLinkedOneWay(target, component.ActiveDeviceLink.Value))
                 {
-                    _link.TryUnlink(component.ActiveDeviceLink.Value, args.Target.Value);
-                    _popup.PopupEntity(Loc.GetString("link-configurator-link-removed-symmetrical", ("first", Name(component.ActiveDeviceLink.Value)), ("second", Name(args.Target.Value))), args.Target.Value, args.User);
+                    _link.TryUnlink(component.ActiveDeviceLink.Value, target);
+                    _popup.PopupEntity(Loc.GetString("link-configurator-link-removed-symmetrical", ("first", Name(component.ActiveDeviceLink.Value)), ("second", Name(target))), target, args.User);
                 }
                 else
                 {
-                    _link.TryUnlinkOneWay(component.ActiveDeviceLink.Value, args.Target.Value);
-                    _popup.PopupEntity(Loc.GetString("link-configurator-link-removed", ("first", Name(component.ActiveDeviceLink.Value)), ("second", Name(args.Target.Value))), args.Target.Value, args.User);
+                    _link.TryUnlinkOneWay(component.ActiveDeviceLink.Value, target);
+                    _popup.PopupEntity(Loc.GetString("link-configurator-link-removed", ("first", Name(component.ActiveDeviceLink.Value)), ("second", Name(target))), target, args.User);
                 }
                 component.ActiveDeviceLink = null;
                 return;
@@ -86,21 +89,21 @@ public sealed class EntityLinkConfiguratorSystem : SharedEntityLinkConfiguratorS
             if (component.LinkModeSymmetrical)
             {
                 // Can't fail due to the check above
-                _link.TryLink(component.ActiveDeviceLink.Value, args.Target.Value, false);
-                _popup.PopupEntity(Loc.GetString("link-configurator-link-created-symmetrical", ("first", Name(component.ActiveDeviceLink.Value)), ("second", Name(args.Target.Value))), args.Target.Value, args.User);
+                _link.TryLink(component.ActiveDeviceLink.Value, target, false);
+                _popup.PopupEntity(Loc.GetString("link-configurator-link-created-symmetrical", ("first", Name(component.ActiveDeviceLink.Value)), ("second", Name(target))), target, args.User);
             }
             else
             {
                 // Can't fail due to the check above
-                _link.OneWayLink(component.ActiveDeviceLink.Value, args.Target.Value, false);
-                _popup.PopupEntity(Loc.GetString("link-configurator-link-created", ("first", Name(component.ActiveDeviceLink.Value)), ("second", Name(args.Target.Value))), args.Target.Value, args.User);
+                _link.OneWayLink(component.ActiveDeviceLink.Value, target, false);
+                _popup.PopupEntity(Loc.GetString("link-configurator-link-created", ("first", Name(component.ActiveDeviceLink.Value)), ("second", Name(target))), target, args.User);
             }
             component.ActiveDeviceLink = null;
         }
         else
         {
-            _popup.PopupEntity(Loc.GetString("link-configurator-link-started", ("device", Name(args.Target.Value))), args.Target.Value, args.User);
-            component.ActiveDeviceLink = args.Target;
+            _popup.PopupEntity(Loc.GetString("link-configurator-link-started", ("device", Name(target))), target, args.User);
+            component.ActiveDeviceLink = target;
         }
     }
 
