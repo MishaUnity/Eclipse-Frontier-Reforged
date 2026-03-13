@@ -2,27 +2,6 @@
 ﻿Entries:
 - author: SlamBamActionman
   changes:
-  - message: Disablers, temperature guns and tasers can now hit holo mobs.
-    type: Fix
-  id: 9057
-  time: '2025-10-08T21:59:39.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40782
-- author: Centronias
-  changes:
-  - message: You can now attach paper labels to wrapped parcels.
-    type: Add
-  id: 9058
-  time: '2025-10-08T22:27:58.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40783
-- author: ToastEnjoyer
-  changes:
-  - message: On fland, the wardens enforcer has been removed.
-    type: Remove
-  id: 9059
-  time: '2025-10-08T23:45:56.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40786
-- author: SlamBamActionman
-  changes:
   - message: EXPERIMENTAL Nocturine now slows the target down, with a longer duration
       and shorter delay before activating.
     type: Tweak
@@ -4004,3 +3983,29 @@
   id: 9567
   time: '2026-03-07T04:26:52.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/43103
+- author: Minemoder
+  changes:
+  - message: Vulpkanins can now use Gauze markings.
+    type: Add
+  id: 9568
+  time: '2026-03-07T21:39:13.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/43096
+- author: 11BelowStudio
+  changes:
+  - message: Spent air grenades cannot be re-triggered.
+    type: Fix
+  id: 9569
+  time: '2026-03-08T01:05:24.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42866
+- author: ScarKy0
+  changes:
+  - message: Hostile vent critters now crawl out of a single vent, alerting the station
+      about the location in advance.
+    type: Add
+  - message: Friendly critters no longer have an announcement when spawning.
+    type: Remove
+  - message: Vent critters can no longer spawn on unachored vents.
+    type: Fix
+  id: 9570
+  time: '2026-03-11T23:42:35.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/43047
