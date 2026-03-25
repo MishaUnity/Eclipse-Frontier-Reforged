@@ -84,7 +84,7 @@ namespace Content.IntegrationTests.Tests
             .Select(glob => new Regex(GlobToRegex(glob), RegexOptions.IgnoreCase | RegexOptions.Compiled))
             .ToArray();
 
-        private static readonly string[] PoIs = GameDataScrounger.PrototypesOfKind<PoIPrototype>().Select(o => o.MapPath);
+        private static readonly string[] PoIs = GameDataScrounger.PrototypesOfKind<PoIPrototype>(); // Eclipse
         private static readonly string[] GameMaps = GameDataScrounger.PrototypesOfKind<GameMapPrototype>().Where(x => x != PoolManager.TestMap).Where(x => x == "Frontier").ToArray(); // Eclipse : only test relevant maps TODO: generalize
         private static readonly ResPath[] AllMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps", "*.yml");
         private static readonly ResPath[] ShuttleMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps/Shuttles", "*.yml");
@@ -577,7 +577,8 @@ namespace Content.IntegrationTests.Tests
             }
 
             // Eclipse-Start : Don't test PoIs here again
-            if (pois.Contains(map)) {
+            if (pois.Contains(mapPath))
+            {
                 await pair.CleanReturnAsync();
                 return;
             }
