@@ -3,6 +3,7 @@ using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Examine;
 using Content.Shared.Verbs;
 using Content.Shared.Maps;
+using Robust.Shared.Random;
 
 namespace Content.Shared.Trigger.Systems;
 
