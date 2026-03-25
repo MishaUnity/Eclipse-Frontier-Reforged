@@ -74,7 +74,7 @@ ion-storm-law-crew-must = { ION-WHO($ion) } ДОЛЖНЫ { ION-MUST($ion) }
 ion-storm-law-crew-must-go = { ION-WHO($ion) } ДОЛЖНЫ ОТПРАВИТЬСЯ В { ION-AREA($ion) }
 
 ion-storm-part =
-    { $part ->
+    { ION-PART($ion) ->
         [true] ЯВЛЯЮТСЯ
        *[false] НЕ ЯВЛЯЮТСЯ
     }
