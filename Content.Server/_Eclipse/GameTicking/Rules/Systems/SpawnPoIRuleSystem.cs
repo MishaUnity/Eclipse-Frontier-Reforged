@@ -55,7 +55,7 @@ public sealed class SpawnPoIRuleSystem : GameRuleSystem<SpawnPoIRuleComponent>
             if (_mapLoader.TryLoadGrid(mapId, mapProto.MapPath, out var grid))
             {
                 var coords = _random.NextVector2(spawnData.MinOriginDistance, spawnData.MaxOriginDistance);
-                var targetEnt = EntityManager.Spawn(null, new MapCoordinates(coords, GameTicker.DefaultMap));
+                var targetEnt = Spawn(null, new MapCoordinates(coords, GameTicker.DefaultMap));
                 _shuttle.TryFTLProximity(grid.Value, targetEnt);
                 Del(targetEnt);
 
