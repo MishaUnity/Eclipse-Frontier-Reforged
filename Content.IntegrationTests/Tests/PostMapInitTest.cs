@@ -46,13 +46,6 @@ namespace Content.IntegrationTests.Tests
             AdminTestArenaSystem.ArenaMapPath
         };
 
-        // Eclipse-Start
-        private static readonly string[] PoIs =
-        {
-            "PoITradeMall"
-        };
-        // Eclipse-End
-
         /// <summary>
         /// A dictionary linking maps to collections of entity prototype ids that should be exempt from "DoNotMap" restrictions.
         /// </summary>
