@@ -1,0 +1,10 @@
+- type: dynamicParallax
+  id: Debug
+  layers:
+    - config:
+        slowness: 0.85
+        scale: "3, 3"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/debug.rsi
+        state: cube

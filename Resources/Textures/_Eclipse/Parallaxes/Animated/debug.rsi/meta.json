@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Made with love by Unity <3",
+  "size": {
+    "x": 128,
+    "y": 128
+  },
+  "states": [
+    {
+      "name": "cube",
+      "delays": 
+      [
+        [ 
+          0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2 
+        ]
+      ]
+    }
+  ]
+}
