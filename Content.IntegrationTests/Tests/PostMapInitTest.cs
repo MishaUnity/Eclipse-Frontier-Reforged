@@ -466,7 +466,7 @@ namespace Content.IntegrationTests.Tests
         [TestCaseSource(nameof(PoIs))]
         public async Task PoIsLoadableTest(string poiProto)
         {
-            await using var pair = await PoolManager.GetServerClient();
+            var pair = Pair;
             var server = pair.Server;
 
             var entManager = server.ResolveDependency<IEntityManager>();
@@ -550,7 +550,6 @@ namespace Content.IntegrationTests.Tests
             // Eclipse-Start : Don't test PoIs here again
             if (pois.Contains(mapPath))
             {
-                await pair.CleanReturnAsync();
                 return;
             }
             // Eclipse-End
