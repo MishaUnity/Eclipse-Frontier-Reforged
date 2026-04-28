@@ -1,0 +1,4 @@
+- type: entityList
+  id: warmPlanets
+  entities:
+  - PlanetEarthlike1

@@ -116,6 +116,7 @@ namespace Content.Server.Entry
             _factory.GenerateNetIds();
 
             _proto.RegisterIgnore("parallax");
+            _proto.RegisterIgnore("dynamicParallax"); // Eclipse-changes
 
             _loc.Initialize();
 

@@ -1,0 +1,26 @@
+- type: entity
+  id: FrontierSystem
+  parent: BaseCelestialSystem
+  name: "Frontier System" 
+  components:
+  - type: Sprite
+    state: star
+  - type: CelestialBody
+    parallax: StarClassG
+  - type: CelestialMap
+    objects:
+    - !type:CelestialMapRadius
+      avalible: warmPlanets
+      startDistance: 1000
+      endDistance: 5000
+      minCount: 2
+      maxCount: 4
+    - !type:CelestialMapEntity
+      entity: StarClassG
+      minDistance: 0
+      maxDistance: 0
+    - !type:CelestialMapPoINearBody
+      prefer: warmPlanets
+      maxDistance: 200
+      avalible: 
+      - PoITradeMall

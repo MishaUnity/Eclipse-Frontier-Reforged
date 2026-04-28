@@ -132,6 +132,7 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("codewordGenerator");
             _prototypeManager.RegisterIgnore("codewordFaction");
             _prototypeManager.RegisterIgnore("poi"); // Eclipse
+            _prototypeManager.RegisterIgnore("celestialMap"); // Eclipse
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();

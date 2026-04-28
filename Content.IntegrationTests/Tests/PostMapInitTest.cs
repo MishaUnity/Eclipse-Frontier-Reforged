@@ -6,7 +6,7 @@ using Content.IntegrationTests.Utility;
 using YamlDotNet.RepresentationModel;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking;
-using Content.Server.PoI; // Eclipse
+using Content.Server._Eclipse.PoI; // Eclipse
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Spawners.Components;

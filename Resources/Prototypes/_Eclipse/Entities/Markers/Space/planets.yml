@@ -1,0 +1,26 @@
+- type: entity
+  id: PlanetEarthlike1
+  parent: BaseCelestialBody
+  name: "earhtlike planet" 
+  components:
+  - type: CelestialBody
+    parallax: Earthlike-1
+    radius: 400
+
+- type: entity
+  id: PlanetCold1
+  parent: BaseCelestialBody
+  name: "cold planet" 
+  components:
+  - type: CelestialBody
+    parallax: Cold-1
+    radius: 300
+
+- type: entity
+  id: PlanetMoon1
+  parent: BaseCelestialBody
+  name: "moon" 
+  components:
+  - type: CelestialBody
+    parallax: Moon-1
+    radius: 200

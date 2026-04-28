@@ -2,7 +2,7 @@
   id: Debug
   layers:
     - config:
-        slowness: 0.85
+        slowness: 0.4
         scale: "3, 3"
         tiled: false
       visual:

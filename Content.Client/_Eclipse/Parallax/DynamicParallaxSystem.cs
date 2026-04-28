@@ -1,4 +1,3 @@
-using Content.Client.Parallax;
 using Content.Shared._Eclipse.Parallax;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -13,7 +12,6 @@ public sealed partial class DynamicParallaxSystem : EntitySystem
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly ParallaxSystem _parallax = default!;
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
@@ -53,6 +51,9 @@ public sealed partial class DynamicParallaxSystem : EntitySystem
     }
 }
 
+/// <summary>
+/// Rises when parallax receiving layers for rendering, not attached to any entity
+/// <summary>
 [ByRefEvent]
 public record struct GetDymanicParallaxLayersEvent
 {
@@ -65,7 +66,7 @@ public record struct GetDymanicParallaxLayersEvent
         MapId = mapId;
     }
 
-    public void AddLayer(RenderedDynamicParallaxLayer layer)
+    public void AddLayer(RenderedDynamicParallaxLayer layer, int zIndex = 0)
     {
         Layers.Add(layer);
     }

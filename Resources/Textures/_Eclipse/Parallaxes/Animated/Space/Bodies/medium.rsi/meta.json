@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Made with love by Unity <3",
+  "size": {
+    "x": 720,
+    "y": 720
+  },
+  "states": [
+    {
+      "name": "earthlike-1"
+    },
+    {
+      "name": "rock-1"
+    },
+    {
+      "name": "cold-1"
+    },
+    {
+      "name": "clouds-1",
+      "delays":
+      [
+        [
+          0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2
+        ]
+      ]
+    },
+    {
+      "name": "clouds-2",
+      "delays":
+      [
+        [
+          0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2
+        ]
+      ]
+    }
+  ]
+}

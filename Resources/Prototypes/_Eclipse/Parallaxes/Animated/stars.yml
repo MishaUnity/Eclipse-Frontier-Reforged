@@ -1,0 +1,17 @@
+- type: dynamicParallax
+  id: StarClassG
+  layers:
+    - config:
+        slowness: 0.97
+        scale: "2.5, 2.5"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/star.rsi
+        state: area-orange
+    - config:
+        slowness: 0.97
+        scale: "1.0, 1.0"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/star.rsi
+        state: class-g

@@ -2,7 +2,7 @@ using Content.Shared.Station;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Server.PoI;
+namespace Content.Server._Eclipse.PoI;
 
 [Prototype("poi")]
 public sealed partial class PoIPrototype : IPrototype
@@ -18,16 +18,14 @@ public sealed partial class PoIPrototype : IPrototype
     public string MapName { get; private set; } = default!;
 
     /// <summary>
-    /// Relative directory path to the given map, i.e. `/Maps/saltern.yml`
+    /// Relative directory path to the given grid, i.e. `/Maps/saltern.yml`
     /// </summary>
     [DataField(required: true)]
     public ResPath MapPath { get; private set; } = default!;
 
-    [DataField("stations", required: true)]
-    private Dictionary<string, StationConfig> _stations = new();
-
     /// <summary>
-    /// The stations this map contains. The names should match with the BecomesStation components.
+    /// The station config for that grid.
     /// </summary>
-    public IReadOnlyDictionary<string, StationConfig> Stations => _stations;
+    [DataField("station")]
+    public StationConfig? Station = null;
 }

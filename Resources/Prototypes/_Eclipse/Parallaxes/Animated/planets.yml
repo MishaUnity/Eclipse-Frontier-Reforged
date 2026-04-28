@@ -1,0 +1,46 @@
+- type: dynamicParallax
+  id: Earthlike-1
+  layers:
+    - config:
+        slowness: 0.97
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: earthlike-1
+    - config:
+        slowness: 0.97
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: clouds-1
+
+- type: dynamicParallax
+  id: Moon-1
+  layers:
+    - config:
+        slowness: 0.96
+        scale: "0.7, 0.7"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: rock-1
+
+- type: dynamicParallax
+  id: Cold-1
+  layers:
+    - config:
+        slowness: 0.97
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: cold-1
+    - config:
+        slowness: 0.97
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: clouds-2

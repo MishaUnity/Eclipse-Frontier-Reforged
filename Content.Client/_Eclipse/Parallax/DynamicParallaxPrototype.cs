@@ -13,7 +13,9 @@ public sealed partial class DynamicParallaxPrototype : IPrototype
     public List<DynamicParallaxLayer> Layers { get; private set; } = new();
 }
 
-// Layer, that use RSI for render
+/// <summary>
+/// Layer, that use RSI sprite for render
+/// <summary>
 [DataDefinition]
 public sealed partial class DynamicParallaxLayer
 {
@@ -24,9 +26,11 @@ public sealed partial class DynamicParallaxLayer
     public DynamicParallaxLayerConfig Config = default!;
 }
 
-// Config for layer position
+/// <summary>
+/// Layer position config, most parameters are identical to the parallax layer
+/// </summary>
 [DataDefinition]
-public sealed partial class DynamicParallaxLayerConfig
+public partial record struct DynamicParallaxLayerConfig
 {
     [DataField("scale")]
     public Vector2 Scale = Vector2.One;
@@ -42,9 +46,13 @@ public sealed partial class DynamicParallaxLayerConfig
 
     [DataField("shader")]
     public string? Shader = "unshaded";
+
+    public DynamicParallaxLayerConfig() { }
 }
 
-// We dont know what types of layers we will have in future
+/// <summary>
+/// Rendered texture with attached config
+/// </summary>
 public struct RenderedDynamicParallaxLayer
 {
     public Texture Texture { get; set; }

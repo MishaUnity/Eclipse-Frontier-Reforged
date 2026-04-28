@@ -1,9 +1,7 @@
-using Content.Server.PoI;
-using Content.Shared.Maps;
+using Content.Server._Eclipse.PoI;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
-namespace Content.Server.GameTicking.Rules.Components;
+namespace Content.Server._Eclipse.GameTicking.Rules.Components;
 
 [RegisterComponent, Access(typeof(SpawnPoIRuleSystem))]
 public sealed partial class SpawnPoIRuleComponent : Component

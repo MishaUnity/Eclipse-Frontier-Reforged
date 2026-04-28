@@ -1,0 +1,51 @@
+- type: entity
+  id: BaseCelestialBody
+  abstract: true
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: /Textures/_Eclipse/Markers/space.rsi
+    state: planet
+  - type: CelestialBody
+  - type: Marker
+  - type: Clickable
+  - type: InteractionOutline
+
+- type: entity
+  id: BaseStar
+  parent: BaseCelestialBody
+  abstract: true
+  components:
+  - type: Sprite
+    state: star
+  - type: CelestialBody
+    parallax: StarClassG
+    radius: 600
+    radarIcon:
+      sprite: /Textures/_Eclipse/Markers/space.rsi
+      state: star
+    radarColor: "#f08322ff"
+
+- type: entity
+  id: BaseCelestialSystem
+  abstract: true
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: /Textures/_Eclipse/Markers/space.rsi
+    state: system
+  - type: CelestialBody
+  - type: Clickable
+  - type: InteractionOutline
+
+- type: entity
+  id: PlanetMarkerDebug
+  parent: BaseCelestialBody
+  name: "debug planet"
+  suffix: Debug 
+  components:
+  - type: CelestialBody
+    parallax: Debug
+    radius: 20
