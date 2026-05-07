@@ -6,7 +6,6 @@
   icon: JobIconDetective
   startingGear: SSSDetectiveGear
   supervisors: job-supervisors-hoss
-  canBeAntag: false
   displayWeight: 5
   requirements:
     - !type:OverallPlaytimeRequirement

@@ -1,5 +1,6 @@
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Prototypes;
+using Content.Shared.HijackBeacon;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -19,6 +20,7 @@ public abstract class SharedCargoSystem : EntitySystem
 
         SubscribeLocalEvent<StationBankAccountComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<StationBankAccountComponent, PostMapInitEvent>(OnPostMapInit); // Eclipse
+        SubscribeLocalEvent<HijackBeaconSuccessEvent>(OnHijackSuccess);
     }
 
     private void OnMapInit(Entity<StationBankAccountComponent> ent, ref MapInitEvent args)
@@ -38,6 +40,23 @@ public abstract class SharedCargoSystem : EntitySystem
         Dirty(ent);
     }
     // Eclipse-End
+
+    private void OnHijackSuccess(ref HijackBeaconSuccessEvent args)
+    {
+        var stationQuery = EntityQueryEnumerator<StationBankAccountComponent>();
+        while (stationQuery.MoveNext(out var uid, out var comp))
+        {
+            foreach (var (account, cash) in comp.Accounts)
+            {
+                comp.Accounts[account] = cash - args.Fine;
+                args.Total += args.Fine;
+            }
+
+            var ev = new BankBalanceUpdatedEvent(uid, comp.Accounts);
+            RaiseLocalEvent(uid, ref ev, true);
+            Dirty(uid, comp);
+        }
+    }
 
     /// <summary>
     /// For a given station, retrieves the balance in a specific account.

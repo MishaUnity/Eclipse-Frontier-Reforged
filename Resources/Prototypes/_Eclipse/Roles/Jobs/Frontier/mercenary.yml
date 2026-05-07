@@ -6,7 +6,6 @@
   icon: JobIconVisitor
   startingGear: MercenaryGear
   supervisors: job-supervisors-hire
-  canBeAntag: false
   displayWeight: -1
   requirements:
     - !type:OverallPlaytimeRequirement

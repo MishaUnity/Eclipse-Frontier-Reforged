@@ -7,7 +7,6 @@
   icon: JobIconMedicalDoctor
   startingGear: SSSMedicGear
   supervisors: job-supervisors-hoss
-  canBeAntag: false
   displayWeight: 2
   requirements:
     - !type:OverallPlaytimeRequirement

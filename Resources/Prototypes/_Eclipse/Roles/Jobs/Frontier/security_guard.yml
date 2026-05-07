@@ -6,7 +6,6 @@
   icon: JobIconSecurityOfficer
   startingGear: FrontierSecurityGuardGear
   supervisors: job-supervisors-hos
-  canBeAntag: false
   displayWeight: 3
   requirements:
     - !type:OverallPlaytimeRequirement

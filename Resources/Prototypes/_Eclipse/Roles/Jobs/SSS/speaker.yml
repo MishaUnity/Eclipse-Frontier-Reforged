@@ -6,7 +6,6 @@
   icon: JobIconLawyer
   startingGear: SSSSpeakerGear
   supervisors: job-supervisors-hoss
-  canBeAntag: false
   displayWeight: 2
   requirements:
     - !type:OverallPlaytimeRequirement

@@ -20,7 +20,7 @@ public sealed partial class GunSystem
 
         SubscribeLocalEvent<SolutionAmmoProviderComponent, MapInitEvent>(OnSolutionMapInit);
         SubscribeLocalEvent<SolutionAmmoProviderComponent, PostMapInitEvent>(OnSolutionPostMapInit); // Eclipse
-        SubscribeLocalEvent<SolutionAmmoProviderComponent, SolutionContainerChangedEvent>(OnSolutionChanged);
+        SubscribeLocalEvent<SolutionAmmoProviderComponent, SolutionChangedEvent>(OnSolutionChanged);
     }
 
     private void OnSolutionMapInit(Entity<SolutionAmmoProviderComponent> entity, ref MapInitEvent args)
@@ -40,10 +40,10 @@ public sealed partial class GunSystem
     }
     // Eclipse-End
 
-    private void OnSolutionChanged(Entity<SolutionAmmoProviderComponent> entity, ref SolutionContainerChangedEvent args)
+    private void OnSolutionChanged(Entity<SolutionAmmoProviderComponent> entity, ref SolutionChangedEvent args)
     {
-        if (args.Solution.Name == entity.Comp.SolutionId)
-            UpdateSolutionShots(entity, args.Solution);
+        if (args.Solution.Comp.Id == entity.Comp.SolutionId)
+            UpdateSolutionShots(entity, args.Solution.Comp.Solution);
     }
 
     protected override void UpdateSolutionShots(Entity<SolutionAmmoProviderComponent> ent, Solution? solution = null)

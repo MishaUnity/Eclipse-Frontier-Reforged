@@ -1,0 +1,435 @@
+- type: entity
+  id: DecorFloorBase
+  name: base floor decor
+  abstract: true
+  placement:
+    mode: PlaceFree
+  components:
+    - type: Transform
+    - type: Physics
+      bodyType: Static
+    - type: Sprite
+      sprite: _Nuclear14/Structures/Decoration/cave_decor.rsi
+    - type: Damageable
+    - type: Injurable
+      damageContainer: StructuralInorganic
+    - type: Destructible
+      thresholds:
+        - trigger: !type:DamageTrigger
+            damage: 100
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+    - type: Clickable
+
+- type: entity
+  id: DecorFloorStalagmiteBase
+  parent: DecorFloorBase
+  name: base stalagmite
+  suffix: floor decor
+  abstract: true
+  components:
+    - type: Destructible
+      thresholds:
+        - trigger: !type:DamageTrigger
+            damage: 5
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: GlassBreak
+
+- type: entity
+  id: DecorFloorStalagmite0
+  parent: DecorFloorStalagmiteBase
+  name: stalagmite
+  suffix: floor decor, stalagmite0
+  components:
+    - type: Sprite
+      state: stalagmite
+
+- type: entity
+  id: DecorFloorStalagmite1
+  parent: DecorFloorStalagmiteBase
+  name: stalagmite
+  suffix: floor decor, stalagmite1
+  components:
+    - type: Sprite
+      state: stalagmite1
+
+- type: entity
+  id: DecorFloorStalagmite2
+  parent: DecorFloorStalagmiteBase
+  name: stalagmite
+  suffix: floor decor, stalagmite2
+  components:
+    - type: Sprite
+      state: stalagmite2
+
+- type: entity
+  id: DecorFloorStalagmite3
+  parent: DecorFloorStalagmiteBase
+  name: stalagmite
+  suffix: floor decor, stalagmite3
+  components:
+    - type: Sprite
+      state: stalagmite3
+
+- type: entity
+  id: DecorFloorStalagmite4
+  parent: DecorFloorStalagmiteBase
+  name: stalagmite
+  suffix: floor decor, stalagmite4
+  components:
+    - type: Sprite
+      state: stalagmite4
+
+- type: entity
+  id: DecorFloorStalagmite5
+  parent: DecorFloorStalagmiteBase
+  name: stalagmite
+  suffix: floor decor, stalagmite5
+  components:
+    - type: Sprite
+      state: stalagmite5
+
+- type: entity
+  id: DecorFloorMinecartFallen
+  parent: DecorFloorBase
+  name: fallen minecart
+  components:
+    - type: Sprite
+      state: minecart_fallen
+
+- type: entity
+  id: DecorFloorSignLeft
+  parent: DecorFloorBase
+  name: sign
+  suffix: floor decor, left
+  components:
+    - type: Sprite
+      state: sign_left
+
+- type: entity
+  id: DecorFloorSignRight
+  parent: DecorFloorBase
+  name: sign
+  suffix: floor decor, right
+  components:
+    - type: Sprite
+      state: sign_right
+
+- type: entity
+  id: DecorFloorBoardsDrought1
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought ns 1
+  components:
+    - type: Sprite
+      state: boards_drought_ns-1
+
+- type: entity
+  id: DecorFloorBoardsDrought2
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought ns 2
+  components:
+    - type: Sprite
+      state: boards_drought_ns-2
+
+- type: entity
+  id: DecorFloorBoardsDrought3
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought ns 3
+  components:
+    - type: Sprite
+      state: boards_drought_ns-3
+
+- type: entity
+  id: DecorFloorBoardsDrought4
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought ns 4
+  components:
+    - type: Sprite
+      state: boards_drought_ns-4
+
+- type: entity
+  id: DecorFloorBoardsDrought5
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought ns 5
+  components:
+    - type: Sprite
+      state: boards_drought_ns-5
+
+- type: entity
+  id: DecorFloorBoardsDrought6
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought ns 6
+  components:
+    - type: Sprite
+      state: boards_drought_ns-6
+
+- type: entity
+  id: DecorFloorBoardsDrought7
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought we 1
+  components:
+    - type: Sprite
+      state: boards_drought_we-1
+
+- type: entity
+  id: DecorFloorBoardsDrought8
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought we 2
+  components:
+    - type: Sprite
+      state: boards_drought_we-2
+
+- type: entity
+  id: DecorFloorBoardsDrought9
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought we 3
+  components:
+    - type: Sprite
+      state: boards_drought_we-3
+
+- type: entity
+  id: DecorFloorBoardsDrought10
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought we 4
+  components:
+    - type: Sprite
+      state: boards_drought_we-4
+
+- type: entity
+  id: DecorFloorBoardsDrought11
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought we 5
+  components:
+    - type: Sprite
+      state: boards_drought_we-5
+
+- type: entity
+  id: DecorFloorBoardsDrought12
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, drought we 6
+  components:
+    - type: Sprite
+      state: boards_drought_we-6
+
+- type: entity
+  id: DecorFloorBoardsMammoth1
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth ns 1
+  components:
+    - type: Sprite
+      state: boards_mammoth_ns-1
+
+- type: entity
+  id: DecorFloorBoardsMammoth2
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth ns 2
+  components:
+    - type: Sprite
+      state: boards_mammoth_ns-2
+
+- type: entity
+  id: DecorFloorBoardsMammoth3
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth ns 3
+  components:
+    - type: Sprite
+      state: boards_mammoth_ns-3
+
+- type: entity
+  id: DecorFloorBoardsMammoth4
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth ns 4
+  components:
+    - type: Sprite
+      state: boards_mammoth_ns-4
+
+- type: entity
+  id: DecorFloorBoardsMammoth5
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth ns 5
+  components:
+    - type: Sprite
+      state: boards_mammoth_ns-5
+
+- type: entity
+  id: DecorFloorBoardsMammoth6
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth ns 6
+  components:
+    - type: Sprite
+      state: boards_mammoth_ns-6
+
+- type: entity
+  id: DecorFloorBoardsMammoth7
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth we 1
+  components:
+    - type: Sprite
+      state: boards_mammoth_we-1
+
+- type: entity
+  id: DecorFloorBoardsMammoth8
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth we 2
+  components:
+    - type: Sprite
+      state: boards_mammoth_we-2
+
+- type: entity
+  id: DecorFloorBoardsMammoth9
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth we 3
+  components:
+    - type: Sprite
+      state: boards_mammoth_we-3
+
+- type: entity
+  id: DecorFloorBoardsMammoth10
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth we 4
+  components:
+    - type: Sprite
+      state: boards_mammoth_we-4
+
+- type: entity
+  id: DecorFloorBoardsMammoth11
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth we 5
+  components:
+    - type: Sprite
+      state: boards_mammoth_we-5
+
+- type: entity
+  id: DecorFloorBoardsMammoth12
+  parent: DecorFloorBase
+  name: wooden boards
+  suffix: floor decor, mammoth we 6
+  components:
+    - type: Sprite
+      state: boards_mammoth_we-6
+
+- type: entity
+  id: DecorFloorSupport
+  parent: DecorFloorBase
+  name: wooden support
+  suffix: floor decor
+  components:
+    - type: Sprite
+      state: support
+    - type: MeleeSound
+      soundGroups:
+        Brute:
+          path: /Audio/Effects/chop.ogg
+          params:
+            variation: 0.05
+    - type: Destructible
+      thresholds:
+        - trigger:
+            # Excess damage, don't spawn entities
+            !type:DamageTrigger
+            damage: 100
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger: !type:DamageTrigger
+            damage: 50
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                Log:
+                  min: 1
+                  max: 3
+
+- type: entity
+  id: DecorFloorSupportBeams
+  parent: DecorFloorSupport
+  name: wooden support beam
+  suffix: floor decor
+  components:
+    - type: Sprite
+      state: support_beams
+
+- type: entity
+  id: DecorFloorSupportWall
+  parent: DecorFloorBase
+  name: wooden support wall
+  suffix: floor decor
+  components:
+    - type: Sprite
+      state: support_wall
+    - type: Destructible
+      thresholds:
+        - trigger:
+            # Excess damage, don't spawn entities
+            !type:DamageTrigger
+            damage: 200
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger: !type:DamageTrigger
+            damage: 75
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                Log:
+                  min: 2
+                  max: 5
+
+- type: entity
+  id: DecorFloorSupportWallBroken
+  parent: DecorFloorSupportWall
+  suffix: floor decor, broken
+  components:
+    - type: Sprite
+      state: support_wall_broken
+    - type: Destructible
+      thresholds:
+        - trigger:
+            # Excess damage, don't spawn entities
+            !type:DamageTrigger
+            damage: 100
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger: !type:DamageTrigger
+            damage: 50
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                Log:
+                  min: 1
+                  max: 3

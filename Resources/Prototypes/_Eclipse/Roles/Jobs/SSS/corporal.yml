@@ -6,7 +6,6 @@
   icon: JobIconSecurityOfficer
   startingGear: CorporalGear
   supervisors: job-supervisors-hoss
-  canBeAntag: false
   displayWeight: 6
   requirements:
     - !type:OverallPlaytimeRequirement

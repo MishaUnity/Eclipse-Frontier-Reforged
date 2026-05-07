@@ -6,7 +6,6 @@
   icon: JobIconLawyer
   startingGear: SSSLawyerGear
   supervisors: job-supervisors-hoss
-  canBeAntag: false
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 5h

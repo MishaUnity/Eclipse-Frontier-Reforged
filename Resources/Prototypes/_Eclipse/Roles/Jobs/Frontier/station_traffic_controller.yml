@@ -5,8 +5,6 @@
   playTimeTracker: JobStationTrafficController
   icon: JobIconHeadOfPersonnel
   startingGear: StationTrafficControllerGear
-  supervisors: job-supervisors-sr
-  canBeAntag: false
   displayWeight: 5
   requirements:
     - !type:OverallPlaytimeRequirement

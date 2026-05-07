@@ -6,7 +6,6 @@
   icon: JobIconHeadOfPersonnel
   startingGear: StationRepresentativeGear
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   displayWeight: 10
   requirements:
     - !type:OverallPlaytimeRequirement
