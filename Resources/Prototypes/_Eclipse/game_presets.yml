@@ -9,3 +9,4 @@
   rules:
   - BasicRoundstartVariation
   - DefaultSpawnPoIRule
+  - InitSectorsRule

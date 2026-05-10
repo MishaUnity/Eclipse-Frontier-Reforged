@@ -1,4 +1,14 @@
 - type: entityList
-  id: warmPlanets
+  id: earhtlikePlanets
   entities:
-  - PlanetEarthlike1
+  - PlanetEarthlike
+
+- type: entityList
+  id: nearPlanets
+  entities:
+  - PlanetEarthlike
+
+- type: entityList
+  id: middlePlanets
+  entities:
+  - PlanetCold1

@@ -2,14 +2,68 @@
   id: Earthlike-1
   layers:
     - config:
-        slowness: 0.97
+        slowness: 0.975
         scale: "0.8, 0.8"
         tiled: false
       visual:
         sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
         state: earthlike-1
     - config:
-        slowness: 0.97
+        slowness: 0.975
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: clouds-1
+
+- type: dynamicParallax
+  id: Earthlike-2
+  layers:
+    - config:
+        slowness: 0.975
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: earthlike-2
+    - config:
+        slowness: 0.975
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: clouds-1
+
+- type: dynamicParallax
+  id: Earthlike-3
+  layers:
+    - config:
+        slowness: 0.975
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: earthlike-3
+    - config:
+        slowness: 0.975
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: clouds-1
+
+- type: dynamicParallax
+  id: Earthlike-4
+  layers:
+    - config:
+        slowness: 0.975
+        scale: "0.8, 0.8"
+        tiled: false
+      visual:
+        sprite: /Textures/_Eclipse/Parallaxes/Animated/Space/Bodies/medium.rsi
+        state: earthlike-4
+    - config:
+        slowness: 0.975
         scale: "0.8, 0.8"
         tiled: false
       visual:

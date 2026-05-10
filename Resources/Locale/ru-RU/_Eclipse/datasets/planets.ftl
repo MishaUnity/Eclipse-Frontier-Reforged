@@ -1,0 +1,10 @@
+planet-names-dataset-1 = Кербин
+planet-names-dataset-2 = Аврора
+planet-names-dataset-3 = Терра
+planet-names-dataset-4 = Альфа-14
+planet-names-dataset-5 = Шагелом
+planet-names-dataset-6 = Розетта
+planet-names-dataset-7 = Алимур
+planet-names-dataset-8 = Фарон
+planet-names-dataset-9 = Миран
+planet-names-dataset-10 = Стармур

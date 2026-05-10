@@ -52,6 +52,7 @@ public sealed partial class CelestialBodySystem : SharedCelestialBodySystem
         {
             var config = layer.Config;
             config.WorldHomePosition += _transform.GetWorldPosition(uid);
+            config.Rotation += _transform.GetWorldRotation(uid);
 
             args.AddLayer(new RenderedDynamicParallaxLayer()
             {

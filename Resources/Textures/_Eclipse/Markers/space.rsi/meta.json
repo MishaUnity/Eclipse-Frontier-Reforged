@@ -8,16 +8,31 @@
   },
   "states": [
     {
+      "name": "empty"
+    },
+    {
       "name": "unknown"
     },
     {
       "name": "planet"
     },
     {
+      "name": "rock"
+    },
+    {
+      "name": "grid"
+    },
+    {
       "name": "star"
     },
     {
       "name": "system"
+    },
+    {
+      "name": "gate"
+    },
+    {
+      "name": "shuttle"
     }
   ]
 }

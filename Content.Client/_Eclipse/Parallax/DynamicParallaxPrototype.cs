@@ -35,6 +35,9 @@ public partial record struct DynamicParallaxLayerConfig
     [DataField("scale")]
     public Vector2 Scale = Vector2.One;
 
+    [DataField("rotation")]
+    public Angle Rotation = Angle.Zero;
+
     [DataField("tiled")]
     public bool Tiled = false;
 

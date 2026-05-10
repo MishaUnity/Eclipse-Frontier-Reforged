@@ -1,0 +1,4 @@
+- type: poi
+  id: PoIStargate
+  mapName: "Stargate"
+  mapPath: /Maps/_Eclipse/PoI/Stargate/gate_debug.yml

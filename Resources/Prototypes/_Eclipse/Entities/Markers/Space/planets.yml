@@ -1,11 +1,20 @@
+# region Earthlike Planets
+
 - type: entity
-  id: PlanetEarthlike1
+  id: PlanetEarthlike
   parent: BaseCelestialBody
   name: "earhtlike planet" 
   components:
   - type: CelestialBody
-    parallax: Earthlike-1
-    radius: 400
+    names: PlanetNames
+    randomParallaxes:
+      - Earthlike-1
+      - Earthlike-2
+      - Earthlike-3
+      - Earthlike-4
+    radius: 500
+
+# endregion Earthlike Planets
 
 - type: entity
   id: PlanetCold1
@@ -14,7 +23,7 @@
   components:
   - type: CelestialBody
     parallax: Cold-1
-    radius: 300
+    radius: 400
 
 - type: entity
   id: PlanetMoon1
@@ -23,4 +32,7 @@
   components:
   - type: CelestialBody
     parallax: Moon-1
-    radius: 200
+    radius: 250
+    radarIcon:
+      sprite: /Textures/_Eclipse/Markers/space.rsi
+      state: rock

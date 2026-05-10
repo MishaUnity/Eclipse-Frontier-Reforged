@@ -23,4 +23,17 @@
   </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\XamlIL.targets" />
+  <ItemGroup>
+    <AdditionalFiles Update="_Eclipse\Map\Sectors\UI\SectorsMapControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AdditionalFiles>
+    <AdditionalFiles Update="_Eclipse\Map\Sectors\UI\SectorsMapWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="_Eclipse\Map\Sectors\UI\SectorsMapWindow.xaml.cs">
+      <DependentUpon>SectorsMapWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

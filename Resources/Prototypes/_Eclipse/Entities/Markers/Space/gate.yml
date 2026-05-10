@@ -1,0 +1,15 @@
+- type: entity
+  id: StargateCenter
+  name: "stargate center"
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: /Textures/_Eclipse/Markers/space.rsi
+    state: gate
+  - type: CelestialBody
+    radius: 150
+    radarIcon:
+      sprite: /Textures/_Eclipse/Markers/space.rsi
+      state: gate
+    radarColor: "#57c061ff"
+  - type: Stargate

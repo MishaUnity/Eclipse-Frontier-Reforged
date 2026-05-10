@@ -12,10 +12,7 @@ namespace Content.Client._Eclipse.Parallax;
 
 public sealed class DynamicParallaxOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly IParallaxManager _parallax = default!;
 
     private readonly DynamicParallaxSystem _dynamic;
@@ -71,13 +68,15 @@ public sealed class DynamicParallaxOverlay : Overlay
                 {
                     for (var y = flooredBL.Y; y < args.WorldAABB.Top; y += size.Y)
                     {
-                        worldHandle.DrawTextureRect(tex, Box2.FromDimensions(new Vector2(x, y), size));
+                        var box = new Box2Rotated(Box2.FromDimensions(new Vector2(x, y), size), layer.Config.Rotation, new Vector2(x, y));
+                        worldHandle.DrawTextureRect(tex, box);
                     }
                 }
             }
             else
             {
-                worldHandle.DrawTextureRect(tex, Box2.FromDimensions(originBL, size));
+                var box = new Box2Rotated(Box2.FromDimensions(originBL, size), layer.Config.Rotation, originBL + size / 2);
+                worldHandle.DrawTextureRect(tex, box);
             }
         }
 

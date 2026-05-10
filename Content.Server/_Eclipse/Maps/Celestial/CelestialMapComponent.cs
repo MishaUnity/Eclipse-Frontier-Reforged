@@ -19,20 +19,38 @@ public sealed partial class CelestialMapComponent : Component
 /// Spawns random entities from the list in a ring around the center
 /// </summary>
 [DataDefinition]
+public sealed partial class CelestialMapComponentOverwrite : CelestialMapGenerator
+{
+    [DataField("components")]
+    public ComponentRegistry Components = new();
+
+    public override void Spawn(EntityUid origin, EntityManager entityManager)
+    {
+        entityManager.AddComponents(origin, Components, true);
+    }
+}
+
+/// <summary>
+/// Spawns random entities from the list in a ring around the center
+/// </summary>
+[DataDefinition]
 public sealed partial class CelestialMapRadius : CelestialMapGenerator
 {
     [DataField("avalible")]
     public ProtoId<EntityListPrototype> AvailableEntities;
 
     [DataField("startDistance")]
-    public float StartDistance = 1000;
+    public float StartDistance = 500;
     [DataField("endDistance")]
-    public float EndDistance = 2000;
+    public float EndDistance = 6000;
 
     [DataField("minCount")]
     public int MinCount = 2;
     [DataField("maxCount")]
     public int MaxCount = 4;
+
+    [DataField("rotationOffset")]
+    public Angle RotationOffset = Angle.FromDegrees(60f);
 
     public override void Spawn(EntityUid origin, EntityManager entityManager)
     {
@@ -49,8 +67,10 @@ public sealed partial class CelestialMapRadius : CelestialMapGenerator
 
             var angle = random.NextAngle();
             Vector2 position = angle.RotateVec(new Vector2(distance, 0f));
+            var rotation = Angle.FromWorldVec(position.Normalized()) + RotationOffset;
 
-            entityManager.SpawnAttachedTo(random.Pick(list.Entities), new EntityCoordinates(origin, position));
+            entityManager.SpawnAttachedTo(random.Pick(list.Entities),
+                                          new EntityCoordinates(origin, position), rotation: rotation);
         }
     }
 }
@@ -86,8 +106,9 @@ public sealed partial class CelestialMapEntity : CelestialMapGenerator
 [DataDefinition]
 public sealed partial class CelestialMapPoINearBody : CelestialMapNearBodyGenerator
 {
-    [DataField("avalible")]
-    public List<ProtoId<PoIPrototype>> RandomSpawnGroup = new();
+    // String keys for better readability
+    [DataField("groups")]
+    public Dictionary<string, List<ProtoId<PoIPrototype>>> RandomSpawnGroups = new();
 
     public override void Spawn(EntityUid origin, EntityManager entityManager)
     {
@@ -98,8 +119,13 @@ public sealed partial class CelestialMapPoINearBody : CelestialMapNearBodyGenera
         if (!TryGetPosition(origin, entityManager, out var position))
             return;
 
-        var spawnPrototype = random.Pick(RandomSpawnGroup);
-        poi.SpawnPoI(spawnPrototype, new MapCoordinates(position, transform.GetMapId(origin)));
+        foreach (var group in RandomSpawnGroups)
+        {
+            var offset = random.NextAngle().RotateVec(new Vector2(random.NextFloat(0f, MaxDistance), 0f));
+
+            var spawnPrototype = random.Pick(group.Value);
+            poi.SpawnPoI(spawnPrototype, new MapCoordinates(position + offset, transform.GetMapId(origin)));
+        }
     }
 }
 
@@ -126,9 +152,7 @@ public abstract partial class CelestialMapNearBodyGenerator : CelestialMapGenera
         if (body == null)
             return false;
 
-        var angle = random.NextAngle();
-        position = angle.RotateVec(new Vector2(random.NextFloat(0f, MaxDistance), 0f));
-        position += transform.GetWorldPosition(body.Value);
+        position = transform.GetWorldPosition(body.Value);
 
         return true;
     }

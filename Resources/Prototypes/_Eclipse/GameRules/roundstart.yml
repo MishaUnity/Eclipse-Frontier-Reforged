@@ -14,3 +14,16 @@
         - mapId: PoITradeMall
           minOriginDistance: 500
           maxOriginDistance: 1000
+
+- type: entity
+  id: InitSectorsRule
+  parent: BaseGameRule
+  components:
+  - type: InitSectorsRule
+    position: !type:DefaultSectorPositionGenerator
+    content:
+    - !type:FrontierSectorGenerator
+      map: FrontierSystem
+    - !type:StargateSectorGenerator
+      group:
+        - PoIStargate

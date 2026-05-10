@@ -1,0 +1,30 @@
+- type: entity
+  parent: BaseComputer
+  id: ComputerNavigation
+  name: navigation console
+  description: Used to purchase and sell personal shuttles.
+  components:
+  - type: Sprite
+    sprite: _Eclipse/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: shipyard
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: SectorsMapConsole
+  - type: ActivatableUI
+    key: enum.SectorsMapConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SectorsMapConsoleUiKey.Key:
+        type: SectorsConsoleBoundUserInterface
+  - type: PointLight
+    radius: 1.5
+    energy: 4.0
+    color: "#43ccb5"
